@@ -68,7 +68,7 @@ class Sidekiq::WorkerKiller
   private
 
   def skip_shutdown?(worker, job, queue)
-    @skip_shutdown.respond_to?(:call) && @skip_shutdown.call(worker, job, queue)
+    @skip_shutdown.respond_to?(:call) && @skip_shutdown.call(worker, job, queue, identity)
   end
 
   def request_shutdown
